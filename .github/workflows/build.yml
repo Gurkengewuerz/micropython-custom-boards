@@ -8,7 +8,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
       with:
-        repository: git@github.com:micropython/micropython.git
+        repository: micropython/micropython
         path: micropython/
         fetch-depth: 0
     - uses: actions/checkout@v3
