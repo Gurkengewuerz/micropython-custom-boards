@@ -1,0 +1,29 @@
+name: build micropython
+on: [push]
+
+jobs:
+
+  build_micropython_custom_boards:
+    runs-on: ubuntu-20.04
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        repository: git@github.com:micropython/micropython.git
+        path: micropython/
+        fetch-depth: 0
+    - uses: actions/checkout@v3
+      with:
+        path: builds/
+        fetch-depth: 0
+    - name: Copy local boards
+      run: cp -rf builds/* micropython/
+    - name: Install esp32 packages
+      working-directory: micropython/
+      run: source tools/ci.sh && ci_esp32_idf44_setup
+    - name: Build esp32 Boards
+      working-directory: micropython/
+      run: source tools/custom_build.sh && ci_build_esp32
+    - uses: actions/upload-artifact@v3
+      with:
+        name: releases
+        path: **.bin
