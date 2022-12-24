@@ -1,0 +1,19 @@
+{
+    "deploy": [
+        "./deploy.md"
+    ],
+    "docs": "",
+    "features": [
+        "BLE",
+        "WiFi",
+        "USB-C",
+        "SPIRAM"
+    ],
+    "images": [
+    ],
+    "mcu": "esp32s3",
+    "product": "ESP32 embed",
+    "thumbnail": "",
+    "url": "https://mc8051.de",
+    "vendor": "mc8051"
+}

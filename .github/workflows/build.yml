@@ -22,7 +22,10 @@ jobs:
     - name: Build esp32 Boards
       working-directory: micropython/
       run: source tools/custom_build.sh && ci_build_esp32
+    - name: Change firmware name
+      working-directory: micropython/
+      run: python ./tools/rename_tool.py
     - uses: actions/upload-artifact@v3
       with:
         name: releases
-        path: ./**.bin
+        path: ./micropython/ports/*/build-*/firmware*.bin
